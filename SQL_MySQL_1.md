@@ -161,7 +161,33 @@ Criar o campo PERCENTUAL_COMISSAO que representa quantos % de comissão o vended
 Resposta:
 
     CREATE TABLE TABELA_DE_VENDEDORES (
-	    MATRICULA VARCHAR(5),
+      MATRICULA VARCHAR(5),
       NOME VARCHAR(100),
       PERCENTUAL_COMISSAO FLOAT)
 
+Apagando uma tabela:
+
+    DROP TABLE <tb_nome>;
+OBS.: se você quer apagar ou criar uma tabela de um banco de dados que você não está usando:
+
+    DROP TABLE <bd_nome>.<tb_nome>;
+
+ # 04. Manutenção dos dados nas tabelas
+Inserindo dados na tabela:
+
+    INSERT INTO <tb_nome> (
+      [colun_1, colun_2, ...] ) VALUES 
+      ([val_1, val_2, ...] );
+Inserindo mais de um registro em uma tabela:
+
+    INSERT INTO <tb_nome> (
+      [colun_1, colun_2, ...] ) VALUES 
+      ([val_1, val_2, ...] ),
+      ([val_1, val_2, ...] ), ... ;
+Alterando registros:
+
+    UPDATE <tb_nome> SET <col> = <mudança>, ...
+    WHERE <condição>
+Excluindo registros:
+
+    DELETE FROM <tb_nome> WHERE <condição>
