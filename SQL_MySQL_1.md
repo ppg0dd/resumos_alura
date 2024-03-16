@@ -191,3 +191,45 @@ Alterando registros:
 Excluindo registros:
 
     DELETE FROM <tb_nome> WHERE <condição>
+Incluindo Chave Primária em uma tabela que já existe:
+
+    ALTER TABLE <tb_nome> ADD PRIMARY KEY (<colun>);
+Adicionando um campo em uma tabela que já existe:
+
+    ALTER TABLE <tb_nome> ADD COLUMN (<colun> <type>);
+
+EXEMPLO:
+    
+    CREATE TABLE tabela_de_vendedores (
+	MATRICULA VARCHAR(5),
+    NOME VARCHAR(100),
+    PERCENTUAL_COMISSAO FLOAT,
+    DATA_ADMISSAO DATE,
+    DE_FERIAS BIT);
+    
+    ALTER TABLE tabela_de_vendedores ADD PRIMARY KEY (MATRICULA);
+    
+    INSERT INTO tabela_de_vendedores (MATRICULA, NOME, PERCENTUAL_COMISSAO, DATA_ADMISSAO, DE_FERIAS) VALUES 
+    ('00235', 'Márcio Almeida Silva', 0.08, '2014-08-15', 0), ('00236', 'Cláudia Morais', 0.08, '2013-09-17', 1), 
+    ('00237', 'Roberta Martins', 0.11, '2017-03-18', 1), ('00238', 'Péricles Alves', 0.11, '2016-08-21', 0);
+
+# 05. Consultando os dados
+No SELECT é possível selecionar dados específicos e utilizar do álias para apelidar as colunas.
+
+    SELECT NOME AS N, CPF, SEXO AS S FROM <tb>;
+Filtrando registros.
+
+    SELECT * FROM <tb_produto>
+    WHERE <CIDADE> = <'RIO DE JANEIRO'>
+É possível utilizar operadores relacionais também (<, >, <=, >=, <> [EXCETO])
+OBS.: 'B' > 'A'
+
+Também existem formas diferentes de filtrar datas.
+
+    SELECT * FROM <tb> WHERE DATA_NASCIMENTO > '1995-01-13';
+    SELECT * FROM <tb> WHERE YEAR(DATA_NASCIMENTO) = 1995;
+    SELECT * FROM <tb> WHERE MONTH(DATA_NASCIMENTO) = 10;
+Filtros compostos:
+
+    SELECT * FROM <tb> WHERE PRECO BETWEEN 16 AND 17;
+    SELECT * FROM tbcliente WHERE ((IDADE BETWEEN 18 AND 22) AND SEXO = 'M') OR (cidade = 'Rio de Janeiro' OR BAIRRO = 'Jardins');;
