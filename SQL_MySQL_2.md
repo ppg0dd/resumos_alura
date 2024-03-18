@@ -80,8 +80,8 @@ Tipos de Join:
 INNER JOIN = Retorna somente quando temos chaves correspondentes
 
     SELECT A.NOME, B.HOBBY
-    FROM TABELA_ESQUERDA A INNER JOIN TABELA_DIREITA B
-    ON A.IDENTIFICADOR = B.IDENTIFICADO;
+    FROM TABELA_ESQUERDA A 
+    INNER JOIN TABELA_DIREITA B ON A.IDENTIFICADOR = B.IDENTIFICADO;
 LEFT JOIN = Retorna todos da tabela da esquerda e somente os correspondentes na da direita. (quem não tem correspondência fica NULL)
 RIGT JOIN = Retorna todos da tabela da direita e somente os correspondentes na da esquerda.
 
@@ -90,4 +90,5 @@ FULL JOIN = Retorna todos os registros de todas as tabelas
 CROSS JOIN = Retorna o produto cartesiano das duas tabelas (todas as combinações possíveis de correspondência)
 
     SELECT A.NOME, B.HOBBY
-    FROM TABELA_ESQUERDA A CROSS JOIN TABELA_DIREITA B;
+    FROM TABELA_ESQUERDA A, TABELA_DIREITA B;
+UNION = Faz a união de duas ou mais tabelas.
