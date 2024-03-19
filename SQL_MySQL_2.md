@@ -91,4 +91,42 @@ CROSS JOIN = Retorna o produto cartesiano das duas tabelas (todas as combinaçõ
 
     SELECT A.NOME, B.HOBBY
     FROM TABELA_ESQUERDA A, TABELA_DIREITA B;
-UNION = Faz a união de duas ou mais tabelas.
+UNION = Faz a união de duas ou mais consulta.
+UNION ALL = Não faz o DISTINCT (caso tenha um registro identido entre as consultas, vai aparecer os dois)
+
+    SELECT DISTINCT BAIRRO, NOME FROM tabela_de_clientes
+    UNION
+    SELECT DISTINCT BAIRRO, NOME FROM tabela_de_vendedores;
+
+Sub-consultas = Podemos usar uma subconsulta dentro de uma consulta
+
+    SELECT X, Y FROM <tab_1>
+    WHERE Y IN (SELECT Y FROM <tab_2>)
+Podemos fazer uma consulta em outra consulta
+
+    SELECT Z.X, Z.NEW_Y
+    FROM (SELECT X.SUM(Y) AS NEW_Y FROM <tab_1> GROUP BY X)
+    WHERE Z.NEW_y = 3
+
+    SELECT X.EMBALAGEM, X.MAIOR_PRECO FROM
+    (SELECT EMBALAGEM, MAX(PRECO_DE_LISTA) AS MAIOR_PRECO FROM tabela_de_produtos GROUP BY EMBALAGEM) X 
+    WHERE X.MAIOR_PRECO >= 10;
+View = É uma tabela lógica, resultado de uma consulta, que pode ser usada depois em qualquer outra consulta. (clicar na opção a esquerda de criar view)
+
+    CREATE VIEW 'VW_<nome>' AS
+    SELECT (...)
+
+# 05. Funções do MySQL
+exemplo:
+
+    SELECT CONCAT(NOME, ' (', CPF, ') ') AS RESULTADO 
+    FROM TABELA_DE_CLIENTES;
+
+    SELECT DISTINCT DATA_VENDA,
+    DAYNAME(DATA_VENDA) AS DIA, 
+    MONTHNAME(DATA_VENDA) AS MES,
+    YEAR(DATA_VENDA) AS ANO 
+    FROM NOTAS_FISCAIS;
+
+     SELECT NUMERO, QUANTIDADE, PRECO, ROUND(QUANTIDADE * PRECO, 2) AS FATURAMENTO
+     FROM ITENS_NOTAS_FISCAIS;
